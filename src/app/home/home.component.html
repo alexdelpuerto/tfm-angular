@@ -1,0 +1,32 @@
+<mat-toolbar color="primary">
+  <span>Gestor de Eventos y Regalos</span>
+  <span>
+    <button [matMenuTriggerFor]="menu" mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+  </span>
+</mat-toolbar>
+<mat-menu xPosition="before" #menu="matMenu">
+  <button mat-menu-item (click)="home()">
+    <mat-icon>home</mat-icon>
+    <span>Inicio</span>
+  </button>
+  <button mat-menu-item (click)="events()">
+    <mat-icon>event</mat-icon>
+    <span>Eventos</span>
+  </button>
+  <button mat-menu-item (click)="friends()">
+    <mat-icon>group</mat-icon>
+    <span>Amigos</span>
+  </button>
+  <button mat-menu-item (click)="requests()">
+    <mat-icon>notifications</mat-icon>
+    <span>Solicitudes</span>
+  </button>
+  <button mat-menu-item (click)="payments()">
+    <mat-icon>euro_symbol</mat-icon>
+    <span>Pagos</span>
+  </button>
+</mat-menu>
+
+<router-outlet></router-outlet>
