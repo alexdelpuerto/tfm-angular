@@ -13,10 +13,13 @@ import {RequestsComponent} from './requests/requests.component';
 export class HomeComponent implements OnInit {
   static URL = 'home';
 
+  username: string = undefined;
+
   constructor(private router: Router) {
   }
 
   ngOnInit() {
+    this.username = localStorage.getItem('currentUser');
   }
 
   home() {

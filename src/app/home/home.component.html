@@ -1,6 +1,11 @@
 <mat-toolbar color="primary">
   <span>Gestor de Eventos y Regalos</span>
   <span>
+    <button mat-button>
+      <span>{{username}}</span>
+      <mat-icon>person</mat-icon>
+      <span>Cerrar Sesión</span>
+    </button>
     <button [matMenuTriggerFor]="menu" mat-icon-button>
       <mat-icon>menu</mat-icon>
     </button>
