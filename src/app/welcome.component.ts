@@ -1,17 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import {MatDialog} from '@angular/material';
+import {HomeComponent} from './home/home.component';
+import {LoginDialogComponent} from './core/login-dialog.component';
 
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.css']
 })
-export class WelcomeComponent implements OnInit {
+export class WelcomeComponent {
 
-  static URL = 'home';
+  static URL = 'welcome';
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
-  ngOnInit() {
+  login() {
+    this.dialog.open(LoginDialogComponent,
+      {
+        data: {homeUrl: HomeComponent.URL}
+      }
+    );
   }
-
 }

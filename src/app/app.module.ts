@@ -5,6 +5,9 @@ import { AppComponent } from './app.component';
 import { AppMaterialModule} from './app-material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+import {CoreModule} from './core/core.module';
+import {UserService} from './home/users/user.service';
 
 @NgModule({
   imports: [
@@ -12,12 +15,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     AppMaterialModule,
     BrowserAnimationsModule,
+    FormsModule,
+    CoreModule
   ],
   declarations: [
     AppComponent,
-    AppRoutingModule.COMPONENTS
+    AppRoutingModule.COMPONENTS,
+    AppRoutingModule.DIALOGS
   ],
-  providers: [],
+  entryComponents: [AppRoutingModule.DIALOGS],
+  providers: [
+    UserService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

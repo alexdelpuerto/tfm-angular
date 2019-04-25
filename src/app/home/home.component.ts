@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {EventsComponent} from '../events/events.component';
-import {FriendsComponent} from '../friends/friends.component';
-import {PaymentsComponent} from '../payments/payments.component';
-import {RequestsComponent} from '../requests/requests.component';
+import {EventsComponent} from './events/events.component';
+import {FriendsComponent} from './friends/friends.component';
+import {PaymentsComponent} from './payments/payments.component';
+import {RequestsComponent} from './requests/requests.component';
 
 @Component({
   selector: 'app-home',
@@ -13,10 +13,13 @@ import {RequestsComponent} from '../requests/requests.component';
 export class HomeComponent implements OnInit {
   static URL = 'home';
 
+  username: string = undefined;
+
   constructor(private router: Router) {
   }
 
   ngOnInit() {
+    this.username = localStorage.getItem('currentUser');
   }
 
   home() {
