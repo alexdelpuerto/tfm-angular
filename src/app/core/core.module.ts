@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {LoginDialogComponent} from './login-dialog.component';
 import {FormsModule} from '@angular/forms';
+import { RegisterDialogComponent } from './register-dialog.component';
 
 import {
   MatButtonModule,
@@ -20,17 +21,20 @@ import {HttpClientModule} from '@angular/common/http';
     HttpClientModule,
     MatButtonModule,
     MatDialogModule,
+    MatIconModule,
     MatInputModule,
-    MatIconModule
   ],
   declarations: [
-    LoginDialogComponent
+    LoginDialogComponent,
+    RegisterDialogComponent
   ],
    exports: [
-     LoginDialogComponent
+     LoginDialogComponent,
+     RegisterDialogComponent
    ],
     entryComponents: [
-      LoginDialogComponent
+      LoginDialogComponent,
+      RegisterDialogComponent
     ],
   providers: [
     HttpService,
