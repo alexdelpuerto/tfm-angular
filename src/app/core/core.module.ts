@@ -12,6 +12,7 @@ import {
 import {HttpService} from './http.service';
 import {UserService} from '../home/users/user.service';
 import {HttpClientModule} from '@angular/common/http';
+import { RegisterDialogComponent } from './register-dialog.component';
 
 @NgModule({
   imports: [
@@ -24,13 +25,16 @@ import {HttpClientModule} from '@angular/common/http';
     MatIconModule
   ],
   declarations: [
-    LoginDialogComponent
+    LoginDialogComponent,
+    RegisterDialogComponent
   ],
    exports: [
-     LoginDialogComponent
+     LoginDialogComponent,
+     RegisterDialogComponent
    ],
     entryComponents: [
-      LoginDialogComponent
+      LoginDialogComponent,
+      RegisterDialogComponent
     ],
   providers: [
     HttpService,

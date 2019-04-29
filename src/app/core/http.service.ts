@@ -50,7 +50,7 @@ export class HttpService {
     const contentType = response.headers.get('content-type');
     if (contentType) {
       if (contentType.indexOf('application/json') !== -1) {
-        localStorage.setItem('currentUser', JSON.parse(user).name);
+        sessionStorage.setItem('currentUser', JSON.parse(user).username);
         return response.body; // with 'text': JSON.parse(response.body);
       }
     } else {

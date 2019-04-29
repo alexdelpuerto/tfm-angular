@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 })
 export class LoginDialogComponent {
   username: string;
-  pass: string;
+  password: string;
   userLogin: UserLogin;
   homeUrl: string;
 
@@ -20,7 +20,7 @@ export class LoginDialogComponent {
   }
 
   login() {
-    this.userLogin = {name: this.username, password: this.pass};
+    this.userLogin = {username: this.username, password: this.password};
     this.userService.login(this.userLogin).subscribe(
       () => this.router.navigate([this.homeUrl])
     );

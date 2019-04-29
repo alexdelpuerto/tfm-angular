@@ -1,0 +1,19 @@
+<h3 mat-dialog-title>Registro</h3>
+<mat-dialog-content>
+  <mat-form-field>
+    <input matInput type="text" placeholder="Nombre de usuario" [(ngModel)]="username"/>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="password" placeholder="Contraseña" [(ngModel)]="password"/>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="text" placeholder="Nombre" [(ngModel)]="name"/>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="text" placeholder="Apellidos" [(ngModel)]="surname"/>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close (click)="register()">Iniciar</button>
+  <button mat-button mat-dialog-close>Cancelar</button>
+</mat-dialog-actions>
