@@ -1,17 +1,20 @@
 <h3 mat-dialog-title>Registro</h3>
 <mat-dialog-content>
   <mat-form-field>
-    <input matInput type="text" placeholder="Nombre de usuario" [(ngModel)]="username"/>
+    <input matInput type="text" placeholder="Nombre de usuario" [(ngModel)]="username" pattern="^[0-9a-zA-Z]+$" required maxlength="20"/>
+    <mat-error>Campo obligatorio. Sólo números y letras</mat-error>
   </mat-form-field>
   <mat-form-field>
-    <input matInput type="password" placeholder="Contraseña" [(ngModel)]="password"/>
+    <input matInput type="password" placeholder="Contraseña" [(ngModel)]="password" required maxlength="20"/>
+    <mat-error>Campo obligatorio</mat-error>
   </mat-form-field>
   <mat-form-field>
-    <input matInput type="text" placeholder="Nombre" [(ngModel)]="name"/>
+    <input matInput type="text" placeholder="Nombre" [(ngModel)]="name" maxlength="20"/>
   </mat-form-field>
   <mat-form-field>
-    <input matInput type="text" placeholder="Apellidos" [(ngModel)]="surname"/>
+    <input matInput type="text" placeholder="Apellidos" [(ngModel)]="surname" maxlength="20"/>
   </mat-form-field>
+  <mat-label>Los campos marcados con * son obligatorios</mat-label>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button mat-dialog-close (click)="register()">Iniciar</button>
