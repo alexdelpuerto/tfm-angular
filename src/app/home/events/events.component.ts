@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+import {EventsService} from './events.service';
+import {Events} from './events.model';
 
 @Component({
   selector: 'app-events',
@@ -8,18 +11,25 @@ import { Component, OnInit } from '@angular/core';
 export class EventsComponent implements OnInit {
 
   static URL = 'events';
-  data: any;
+  data: Events[];
   title = 'Eventos';
-  columns = ['nombre', 'presupuesto', 'queda', 'creador'];
+  columns = ['name', 'budget', 'creator'];
+  userId: string;
 
-
-  constructor() {
+  constructor(private eventService: EventsService, private router: Router) {
     this.data = [
-      {nombre: 'evento1', presupuesto: 23.4, queda: 20, creador: 'pepe'},
-      {nombre: 'evento2', presupuesto: 20.4, queda: 18, creador: 'juan'}];
+      {name: null, budget: null, creator: null}];
   }
 
   ngOnInit() {
+    this.userId = sessionStorage.getItem('userId');
+    this.readAll();
   }
 
+  readAll() {
+    this.eventService.readAll(Number.parseInt(this.userId, 10)).subscribe(
+      events => {this.data = events['events'];
+      }
+    );
+  }
 }
