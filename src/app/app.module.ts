@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import {CoreModule} from './core/core.module';
 import {UserService} from './home/users/user.service';
+import {EventsService} from './home/events/events.service';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import {UserService} from './home/users/user.service';
   ],
   entryComponents: [AppRoutingModule.DIALOGS],
   providers: [
+    EventsService,
     UserService,
   ],
   bootstrap: [AppComponent]

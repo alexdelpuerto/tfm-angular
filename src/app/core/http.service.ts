@@ -6,7 +6,6 @@ import {Router} from '@angular/router';
 import {Observable, throwError} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 import {Error} from './error.model';
-import {UserRegister} from '../home/users/user-register.model';
 
 @Injectable()
 export class HttpService {
@@ -21,6 +20,15 @@ export class HttpService {
 
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {
     this.resetOptions();
+  }
+
+  get(endPoint: string): Observable<any> {
+    return this.http.get(HttpService.API_END_POINT + endPoint, this.createOptions()).pipe(
+      map(response => this.extractData(response)
+      ), catchError(error => {
+        return this.handleError(error);
+      })
+    );
   }
 
   login(endPoint: string, user: Object): Observable<any> {
@@ -48,6 +56,7 @@ export class HttpService {
       responseType: this.responseType,
       observe: 'response'
     };
+    this.resetOptions();
     return options;
   }
 
@@ -61,7 +70,10 @@ export class HttpService {
     const contentType = response.headers.get('content-type');
     if (contentType) {
       if (contentType.indexOf('application/json') !== -1) {
-        sessionStorage.setItem('currentUser', JSON.parse(user).username);
+        if (user != null) {
+          sessionStorage.setItem('username', JSON.parse(user).username);
+          sessionStorage.setItem('userId', response.body.userId);
+        }
         return response.body;
       }
     } else {
@@ -71,7 +83,7 @@ export class HttpService {
 
   private handleError(response): any {
     let error: Error;
-    // try {
+    try {
     if (response.status === HttpService.NOT_FOUND) {
         error = {error: 'Not Found', message: response.error.message, path: ''};
       } else if (response.status === HttpService.BAD_REQUEST) {
@@ -83,12 +95,12 @@ export class HttpService {
       duration: 5000
     });
     return throwError(error);
-    /*} catch (e) {
+    } catch (e) {
       this.snackBar.open('No hay respuesta del servidor', 'Error', {
       duration: 5000
     });
       return throwError(response.error);
-    }*/
+    }
   }
 
   private resetOptions() {
@@ -97,7 +109,7 @@ export class HttpService {
     this.responseType = 'json';
   }
 
-  messageCorrect(notification = 'Correcto'): HttpService {
+  messageCorrect(notification = 'Correcto', user?): HttpService {
     this.correctNotification = notification;
     return this;
   }

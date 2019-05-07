@@ -6,13 +6,16 @@ import { RegisterDialogComponent } from './register-dialog.component';
 
 import {
   MatButtonModule,
+  MatCardModule,
   MatDialogModule,
   MatIconModule,
-  MatInputModule
+  MatInputModule,
+  MatTableModule
 } from '@angular/material';
 import {HttpService} from './http.service';
 import {UserService} from '../home/users/user.service';
 import {HttpClientModule} from '@angular/common/http';
+import { CrudComponent } from './crud.component';
 
 @NgModule({
   imports: [
@@ -20,18 +23,22 @@ import {HttpClientModule} from '@angular/common/http';
     FormsModule,
     HttpClientModule,
     MatButtonModule,
+    MatCardModule,
     MatDialogModule,
     MatIconModule,
     MatInputModule,
+    MatTableModule
   ],
   declarations: [
+    CrudComponent,
     LoginDialogComponent,
     RegisterDialogComponent
   ],
-   exports: [
-     LoginDialogComponent,
-     RegisterDialogComponent
-   ],
+  exports: [
+    CrudComponent,
+    LoginDialogComponent,
+    RegisterDialogComponent
+  ],
     entryComponents: [
       LoginDialogComponent,
       RegisterDialogComponent

@@ -12,6 +12,7 @@ import {Router} from '@angular/router';
 export class LoginDialogComponent {
   username: string;
   password: string;
+  userId: string;
   userLogin: UserLogin;
   homeUrl: string;
 
