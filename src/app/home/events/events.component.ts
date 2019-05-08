@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {EventsService} from './events.service';
 import {Events} from './events.model';
+import {MatDialog, MatDialogConfig} from '@angular/material';
+import {EventsCreateDialogComponent} from './events-create-dialog/events-create-dialog.component';
 
 @Component({
   selector: 'app-events',
@@ -15,8 +17,9 @@ export class EventsComponent implements OnInit {
   title = 'Eventos';
   columns = ['name', 'budget', 'creator'];
   userId: string;
+  event: Events;
 
-  constructor(private eventService: EventsService, private router: Router) {
+  constructor(private dialog: MatDialog, private eventService: EventsService, private router: Router) {
     this.data = [
       {name: null, budget: null, creator: null}];
   }
@@ -31,5 +34,14 @@ export class EventsComponent implements OnInit {
       events => {this.data = events['events'];
       }
     );
+  }
+
+  create() {
+    const dialogConfig: MatDialogConfig = {
+      data: {
+        event: {}
+      }
+    };
+    this.dialog.open(EventsCreateDialogComponent, dialogConfig);
   }
 }
