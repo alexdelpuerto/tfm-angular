@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { AppMaterialModule} from './app-material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CoreModule} from './core/core.module';
 import {UserService} from './home/users/user.service';
 import {EventsService} from './home/events/events.service';
@@ -17,7 +17,8 @@ import {EventsService} from './home/events/events.service';
     AppMaterialModule,
     BrowserAnimationsModule,
     FormsModule,
-    CoreModule
+    CoreModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AppComponent,

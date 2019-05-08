@@ -6,6 +6,7 @@ import { EventsComponent } from './home/events/events.component';
 import { FriendsComponent } from './home/friends/friends.component';
 import { PaymentsComponent } from './home/payments/payments.component';
 import { RequestsComponent } from './home/requests/requests.component';
+import { EventsCreateDialogComponent } from './home/events/events-create-dialog/events-create-dialog.component';
 
 const routes: Routes = [
     {path: '', pathMatch: 'full', redirectTo: WelcomeComponent.URL},
@@ -36,6 +37,6 @@ export class AppRoutingModule {
   ];
 
   static DIALOGS = [
-
+    EventsCreateDialogComponent
   ];
 }
