@@ -42,6 +42,12 @@ export class EventsComponent implements OnInit {
         event: {}
       }
     };
-    this.dialog.open(EventsCreateDialogComponent, dialogConfig);
+    this.dialog.open(EventsCreateDialogComponent, dialogConfig).afterClosed().subscribe(
+      response => {
+        if (response) {
+          this.readAll();
+        }
+      }
+    );
   }
 }
