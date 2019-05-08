@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Events} from '../events.model';
 import {MAT_DIALOG_DATA} from '@angular/material';
 
@@ -19,8 +19,8 @@ export class EventsCreateDialogComponent implements OnInit {
 
   ngOnInit() {
     this.eventForm = new FormGroup({
-      name: new FormControl(this.event.name),
-      budget: new FormControl(this.event.budget)
+      name: new FormControl(this.event.name, Validators.compose([Validators.required, Validators.maxLength(30)])),
+      budget: new FormControl(this.event.budget, Validators.compose([Validators.required, Validators.min(0)]))
     });
   }
 
