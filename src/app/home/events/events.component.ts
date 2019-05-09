@@ -10,6 +10,7 @@ import {EventsCreateDialogComponent} from './events-create-dialog/events-create-
   templateUrl: './events.component.html',
   styleUrls: ['./events.component.css']
 })
+
 export class EventsComponent implements OnInit {
 
   static URL = 'events';

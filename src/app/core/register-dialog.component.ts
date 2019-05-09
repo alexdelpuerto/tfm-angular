@@ -9,6 +9,7 @@ import {MAT_DIALOG_DATA} from '@angular/material';
   templateUrl: './register-dialog.component.html',
   styleUrls: ['./register-dialog.component.css']
 })
+
 export class RegisterDialogComponent {
   username: string;
   password: string;

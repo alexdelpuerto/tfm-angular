@@ -10,6 +10,7 @@ import {RequestsComponent} from './requests/requests.component';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
 export class HomeComponent implements OnInit {
   static URL = 'home';
 

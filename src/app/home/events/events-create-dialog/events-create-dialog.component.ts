@@ -9,6 +9,7 @@ import {EventsService} from '../events.service';
   templateUrl: './events-create-dialog.component.html',
   styleUrls: ['./events-create-dialog.component.css']
 })
+
 export class EventsCreateDialogComponent implements OnInit {
 
   event: Events;
