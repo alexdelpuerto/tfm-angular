@@ -9,6 +9,7 @@ import {Router} from '@angular/router';
   templateUrl: './login-dialog.component.html',
   styleUrls: ['./login-dialog.component.css']
 })
+
 export class LoginDialogComponent {
   username: string;
   password: string;
