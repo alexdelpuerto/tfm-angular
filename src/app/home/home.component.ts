@@ -15,12 +15,14 @@ export class HomeComponent implements OnInit {
   static URL = 'home';
 
   username: string = undefined;
+  userId: string = undefined;
 
   constructor(private router: Router) {
   }
 
   ngOnInit() {
-    this.username = sessionStorage.getItem('currentUser');
+    this.username = sessionStorage.getItem('username');
+    this.userId = sessionStorage.getItem('userId');
   }
 
   home() {

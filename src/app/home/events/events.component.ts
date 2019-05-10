@@ -51,4 +51,8 @@ export class EventsComponent implements OnInit {
       }
     );
   }
+
+  getGifts() {
+    //this.router.navigate([EventsComponent.URL, GiftsComponent.URL]);
+  }
 }
