@@ -7,6 +7,7 @@ import { FriendsComponent } from './home/friends/friends.component';
 import { PaymentsComponent } from './home/payments/payments.component';
 import { RequestsComponent } from './home/requests/requests.component';
 import { EventsCreateDialogComponent } from './home/events/events-create-dialog/events-create-dialog.component';
+import { GiftsComponent } from './home/events/gifts/gifts.component';
 
 const routes: Routes = [
     {path: '', pathMatch: 'full', redirectTo: WelcomeComponent.URL},
@@ -30,6 +31,7 @@ export class AppRoutingModule {
   static COMPONENTS = [
     EventsComponent,
     FriendsComponent,
+    GiftsComponent,
     HomeComponent,
     PaymentsComponent,
     RequestsComponent,

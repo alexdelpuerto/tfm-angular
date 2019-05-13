@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {EventsService} from './events.service';
 import {Events} from './events.model';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import {EventsCreateDialogComponent} from './events-create-dialog/events-create-dialog.component';
+import {Gifts} from './gifts/gifts.model';
 
 @Component({
   selector: 'app-events',
@@ -15,14 +15,16 @@ export class EventsComponent implements OnInit {
 
   static URL = 'events';
   data: Events[];
+  gifts: Gifts[];
   title = 'Eventos';
   columns = ['name', 'budget', 'creator'];
   userId: string;
   event: Events;
+  @Output() emitter = new EventEmitter<Gifts[]>();
 
-  constructor(private dialog: MatDialog, private eventService: EventsService, private router: Router) {
+  constructor(private dialog: MatDialog, private eventService: EventsService) {
     this.data = [
-      {name: null, budget: null, creator: null}];
+      {id: null, name: null, budget: null, creator: null}];
   }
 
   ngOnInit() {
@@ -48,6 +50,15 @@ export class EventsComponent implements OnInit {
         if (response) {
           this.readAll();
         }
+      }
+    );
+  }
+
+  getGifts(event: Events) {
+    const eventId = this.data[this.data.indexOf(event)].id;
+    this.eventService.readGifts(eventId).subscribe(
+      gifts => {
+        this.gifts = gifts['gifts'];
       }
     );
   }
