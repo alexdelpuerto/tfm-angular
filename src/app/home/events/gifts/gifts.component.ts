@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Gifts} from './gifts.model';
 
 @Component({
@@ -10,9 +10,9 @@ import {Gifts} from './gifts.model';
 export class GiftsComponent implements OnInit {
 
   static URL = 'gifts';
-  data: Gifts[];
   title = 'Regalos';
   columns = ['name', 'price', 'description'];
+  @Input() data: Gifts[];
 
   constructor() {
     this.data = [
@@ -22,5 +22,4 @@ export class GiftsComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }
