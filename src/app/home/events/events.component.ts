@@ -56,6 +56,7 @@ export class EventsComponent implements OnInit {
 
   getGifts(event: Events) {
     const eventId = this.data[this.data.indexOf(event)].id;
+    sessionStorage.setItem('eventId', eventId.toString());
     this.eventService.readGifts(eventId).subscribe(
       gifts => {
         this.gifts = gifts['gifts'];
