@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Gifts} from './gifts.model';
 import {MatDialog, MatDialogConfig} from '@angular/material';
-import {GiftsCreateDialogComponent} from '../gifts-create-dialog/gifts-create-dialog.component';
+import {GiftsCreateDialogComponent} from './gifts-create-dialog/gifts-create-dialog.component';
 
 @Component({
   selector: 'app-gifts',
@@ -35,7 +35,6 @@ export class GiftsComponent implements OnInit {
     this.dialog.open(GiftsCreateDialogComponent, dialogConfig).afterClosed().subscribe(
       response => {
         if (response) {
-          //this.readAll();
         }
       }
     );

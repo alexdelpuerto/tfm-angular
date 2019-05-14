@@ -1,8 +1,8 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA} from '@angular/material';
-import {EventsService} from '../events.service';
-import {Gifts} from '../gifts/gifts.model';
+import {Gifts} from '../gifts.model';
+import {GiftsService} from '../../gifts.service';
 
 @Component({
   selector: 'app-gifts-create-dialog',
@@ -14,7 +14,7 @@ export class GiftsCreateDialogComponent implements OnInit {
   gift: Gifts;
   giftForm: FormGroup;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private eventService: EventsService) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private giftService: GiftsService) {
     this.gift = data.gift;
   }
 
@@ -28,12 +28,10 @@ export class GiftsCreateDialogComponent implements OnInit {
   }
 
   createGift() {
-    console.log(this.giftForm.value);
-    /*
-    this.eventService.createGift(this.giftForm.value).subscribe(result => {
+    this.giftService.createGift(this.giftForm.value).subscribe(result => {
       if (result) {
         return true;
       }
-    });*/
+    });
   }
 }
