@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA} from '@angular/material';
 import {EventsService} from '../events.service';
 import {Gifts} from '../gifts/gifts.model';
@@ -20,9 +20,9 @@ export class GiftsCreateDialogComponent implements OnInit {
 
   ngOnInit() {
     this.giftForm = new FormGroup({
-      name: new FormControl(this.gift.name),
-      price: new FormControl(this.gift.price),
-      description: new FormControl(this.gift.description),
+      name: new FormControl(this.gift.name, Validators.compose([Validators.required, Validators.maxLength(20)])),
+      price: new FormControl(this.gift.price, Validators.compose([Validators.required, Validators.min(0)])),
+      description: new FormControl(this.gift.description, Validators.maxLength(200)),
       eventId: new FormControl(Number.parseInt(sessionStorage.getItem('eventId'), 10))
     });
   }
