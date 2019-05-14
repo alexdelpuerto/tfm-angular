@@ -8,6 +8,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CoreModule} from './core/core.module';
 import {UserService} from './home/users/user.service';
 import {EventsService} from './home/events/events.service';
+import {GiftsService} from './home/events/gifts.service';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import {EventsService} from './home/events/events.service';
   entryComponents: [AppRoutingModule.DIALOGS],
   providers: [
     EventsService,
+    GiftsService,
     UserService,
   ],
   bootstrap: [AppComponent]

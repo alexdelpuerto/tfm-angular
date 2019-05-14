@@ -4,6 +4,7 @@ import {Events} from './events.model';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import {EventsCreateDialogComponent} from './events-create-dialog/events-create-dialog.component';
 import {Gifts} from './gifts/gifts.model';
+import {GiftsService} from './gifts.service';
 
 @Component({
   selector: 'app-events',
@@ -22,7 +23,7 @@ export class EventsComponent implements OnInit {
   event: Events;
   @Output() emitter = new EventEmitter<Gifts[]>();
 
-  constructor(private dialog: MatDialog, private eventService: EventsService) {
+  constructor(private dialog: MatDialog, private eventService: EventsService, private giftService: GiftsService) {
     this.data = [
       {id: null, name: null, budget: null, creator: null}];
   }
@@ -56,7 +57,8 @@ export class EventsComponent implements OnInit {
 
   getGifts(event: Events) {
     const eventId = this.data[this.data.indexOf(event)].id;
-    this.eventService.readGifts(eventId).subscribe(
+    sessionStorage.setItem('eventId', eventId.toString());
+    this.giftService.readGifts(eventId).subscribe(
       gifts => {
         this.gifts = gifts['gifts'];
       }
