@@ -19,7 +19,7 @@ export class GiftsComponent implements OnInit {
 
   constructor(private dialog: MatDialog) {
     this.data = [
-      {name: null, price: null, description: null, bought: null}
+      {id: null, name: null, price: null, description: null, bought: null}
     ];
   }
 
@@ -41,13 +41,20 @@ export class GiftsComponent implements OnInit {
     );
   }
 
-  buy($event: any) {
+  buy(gift: Gifts) {
+    const json = {
+      giftId: gift.id,
+      buyer: sessionStorage.getItem('username')
+      };
+    console.log(JSON.stringify(json));
+    console.log(json['giftId']);
+    console.log(json['buyer']);
     this.dialog.open(ConfirmationDialogComponent).afterClosed().subscribe(
       result => {
         if (result) {
-          //this.giftService...
+          // this.giftService...
         }
       }
     );
-  }
+  };
 }
