@@ -17,6 +17,7 @@ import {HttpService} from './http.service';
 import {UserService} from '../home/users/user.service';
 import {HttpClientModule} from '@angular/common/http';
 import { CrudComponent } from './crud.component';
+import { ConfirmationDialogComponent } from './confirmation-dialog.component';
 
 @NgModule({
   imports: [
@@ -31,16 +32,19 @@ import { CrudComponent } from './crud.component';
     MatTableModule
   ],
   declarations: [
+    ConfirmationDialogComponent,
     CrudComponent,
     LoginDialogComponent,
-    RegisterDialogComponent
+    RegisterDialogComponent,
   ],
   exports: [
+    ConfirmationDialogComponent,
     CrudComponent,
     LoginDialogComponent,
     RegisterDialogComponent
   ],
     entryComponents: [
+      ConfirmationDialogComponent,
       LoginDialogComponent,
       RegisterDialogComponent
     ],

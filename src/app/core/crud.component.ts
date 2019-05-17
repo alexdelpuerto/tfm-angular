@@ -14,11 +14,13 @@ export class CrudComponent {
   @Input() updateAction = true;
   @Input() deleteAction = true;
   @Input() editMembersAction = false;
+  @Input() buyAction;
   @Output() create = new EventEmitter<any>();
   @Output() read = new EventEmitter<any>();
   @Output() update = new EventEmitter<any>();
   @Output() delete = new EventEmitter<any>();
   @Output() editMembers = new EventEmitter<any>();
+  @Output() buy = new EventEmitter<any>();
   dataSource: MatTableDataSource<any>;
 
   @Input()
@@ -44,5 +46,9 @@ export class CrudComponent {
 
   onEditMembers() {
     this.editMembers.emit();
+  }
+
+  onBuy(item) {
+    this.buy.emit(item);
   }
 }

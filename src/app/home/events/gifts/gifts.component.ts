@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Gifts} from './gifts.model';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import {GiftsCreateDialogComponent} from './gifts-create-dialog/gifts-create-dialog.component';
+import {ConfirmationDialogComponent} from '../../../core/confirmation-dialog.component';
 
 @Component({
   selector: 'app-gifts',
@@ -18,7 +19,7 @@ export class GiftsComponent implements OnInit {
 
   constructor(private dialog: MatDialog) {
     this.data = [
-      {name: null, price: null, description: null}
+      {name: null, price: null, description: null, bought: null}
     ];
   }
 
@@ -35,6 +36,16 @@ export class GiftsComponent implements OnInit {
     this.dialog.open(GiftsCreateDialogComponent, dialogConfig).afterClosed().subscribe(
       response => {
         if (response) {
+        }
+      }
+    );
+  }
+
+  buy($event: any) {
+    this.dialog.open(ConfirmationDialogComponent).afterClosed().subscribe(
+      result => {
+        if (result) {
+          //this.giftService...
         }
       }
     );
