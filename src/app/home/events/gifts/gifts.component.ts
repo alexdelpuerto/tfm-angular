@@ -3,6 +3,8 @@ import {Gifts} from './gifts.model';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import {GiftsCreateDialogComponent} from './gifts-create-dialog/gifts-create-dialog.component';
 import {ConfirmationDialogComponent} from '../../../core/confirmation-dialog.component';
+import {GiftsService} from '../gifts.service';
+import {PaymentsService} from '../../payments/payments.service';
 
 @Component({
   selector: 'app-gifts',
@@ -17,7 +19,7 @@ export class GiftsComponent implements OnInit {
   columns = ['name', 'price', 'description'];
   @Input() data: Gifts[];
 
-  constructor(private dialog: MatDialog) {
+  constructor(private dialog: MatDialog, private giftService: GiftsService, private paymentService: PaymentsService) {
     this.data = [
       {id: null, name: null, price: null, description: null, bought: null}
     ];
@@ -46,15 +48,12 @@ export class GiftsComponent implements OnInit {
       giftId: gift.id,
       buyer: sessionStorage.getItem('username')
       };
-    console.log(JSON.stringify(json));
-    console.log(json['giftId']);
-    console.log(json['buyer']);
     this.dialog.open(ConfirmationDialogComponent).afterClosed().subscribe(
-      result => {
-        if (result) {
-          // this.giftService...
+      (response) => {
+        if (response) {
+          this.paymentService.create(JSON.stringify(json)).subscribe();
         }
       }
     );
-  };
+  }
 }
