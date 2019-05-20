@@ -15,6 +15,12 @@
           </button>
         </mat-header-cell>
         <mat-cell *matCellDef="let item">
+          <button (click)="onBuy(item)" *ngIf="item.bought==false" mat-button mat-icon-button matSuffix>
+            <mat-icon color="warn">shopping_cart</mat-icon>
+          </button>
+          <button *ngIf="item.bought==true" mat-button mat-icon-button matSuffix>
+            <mat-icon color="warn">remove_shopping_cart</mat-icon>
+          </button>
           <button (click)="onRead(item)" *ngIf="readAction==true" mat-button mat-icon-button matSuffix>
             <mat-icon color="warn">visibility</mat-icon>
           </button>

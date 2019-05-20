@@ -9,6 +9,7 @@ import {CoreModule} from './core/core.module';
 import {UserService} from './home/users/user.service';
 import {EventsService} from './home/events/events.service';
 import {GiftsService} from './home/events/gifts.service';
+import {PaymentsService} from './home/payments/payments.service';
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import {GiftsService} from './home/events/gifts.service';
   providers: [
     EventsService,
     GiftsService,
+    PaymentsService,
     UserService,
   ],
   bootstrap: [AppComponent]

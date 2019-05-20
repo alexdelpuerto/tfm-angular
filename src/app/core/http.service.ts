@@ -117,7 +117,7 @@ export class HttpService {
     this.responseType = 'json';
   }
 
-  messageCorrect(notification = 'Correcto', user?): HttpService {
+  messageCorrect(notification = 'Correcto'): HttpService {
     this.correctNotification = notification;
     return this;
   }
