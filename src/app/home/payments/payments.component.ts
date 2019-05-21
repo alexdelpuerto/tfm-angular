@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {PaymentsService} from './payments.service';
+import {Payments} from './payments.model';
 
 @Component({
   selector: 'app-payments',
@@ -8,16 +10,25 @@ import {Component, OnInit} from '@angular/core';
 export class PaymentsComponent implements OnInit {
 
   static URL = 'payments';
-  data: any;
+  username: string;
+  data: Payments[];
   title = 'Te Deben';
-  columns = ['person', 'totalPrice'];
+  columns = ['person', 'price', 'giftname'];
 
-  constructor() {
+  constructor(private paymentService: PaymentsService) {
     this.data = [
-      {person: 'User1', totalPrice: 13.3}, {person: 'User2', totalPrice: 10}];
+      {id: null, person: null, price: null, giftname: null}];
   }
 
   ngOnInit() {
+    this.username = sessionStorage.getItem('username');
+    this.readAll();
   }
 
+  readAll() {
+    this.paymentService.readAll(this.username).subscribe(
+      payments => {this.data = payments['collections'];
+      }
+    );
+  }
 }
