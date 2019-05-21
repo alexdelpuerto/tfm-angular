@@ -1,6 +1,6 @@
-export interface Payments {
+export interface PaymentsCol {
   id: number;
-  buyer: string;
+  person: string;
   price: number;
   giftname: string;
 }
