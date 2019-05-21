@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PaymentsService} from './payments.service';
+import {PaymentsCol} from './paymentsCol.model';
 import {Payments} from './payments.model';
 
 @Component({
@@ -11,23 +12,37 @@ export class PaymentsComponent implements OnInit {
 
   static URL = 'payments';
   username: string;
-  data: Payments[];
+  data: PaymentsCol[];
+  data2: Payments[];
   title = 'Te Deben';
+  title2 = 'Debes';
   columns = ['person', 'price', 'giftname'];
+  columns2 = ['buyer', 'price', 'giftname'];
 
   constructor(private paymentService: PaymentsService) {
     this.data = [
       {id: null, person: null, price: null, giftname: null}];
+
+    this.data2 = [
+      {id: null, buyer: null, price: null, giftname: null}];
   }
 
   ngOnInit() {
     this.username = sessionStorage.getItem('username');
-    this.readAll();
+    this.readAllCollections();
+    this.readAllPayments();
   }
 
-  readAll() {
-    this.paymentService.readAll(this.username).subscribe(
+  readAllCollections() {
+    this.paymentService.readAllCollections(this.username).subscribe(
       payments => {this.data = payments['collections'];
+      }
+    );
+  }
+
+  readAllPayments() {
+    this.paymentService.readAllPayments(this.username).subscribe(
+      payments => {this.data2 = payments['payments'];
       }
     );
   }
