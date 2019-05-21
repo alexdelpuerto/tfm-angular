@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-payments',
@@ -6,8 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./payments.component.css']
 })
 export class PaymentsComponent implements OnInit {
+
   static URL = 'payments';
-  constructor() { }
+  data: any;
+  title = 'Te Deben';
+  columns = ['person', 'totalPrice'];
+
+  constructor() {
+    this.data = [
+      {person: 'User1', totalPrice: 13.3}, {person: 'User2', totalPrice: 10}];
+  }
 
   ngOnInit() {
   }
