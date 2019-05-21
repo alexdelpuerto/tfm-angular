@@ -23,17 +23,26 @@ export class PaymentsComponent implements OnInit {
     this.data = [
       {id: null, person: null, price: null, giftname: null}];
 
-    this.data2 = [{id: 1, buyer: 'pepe', price: 23.1, giftname: 'regalito'}, {id: 2, buyer: 'buyer', price: 11, giftname: 'rega'}];
+    this.data2 = [
+      {id: null, buyer: null, price: null, giftname: null}];
   }
 
   ngOnInit() {
     this.username = sessionStorage.getItem('username');
-    this.readAll();
+    this.readAllCollections();
+    this.readAllPayments();
   }
 
-  readAll() {
-    this.paymentService.readAll(this.username).subscribe(
+  readAllCollections() {
+    this.paymentService.readAllCollections(this.username).subscribe(
       payments => {this.data = payments['collections'];
+      }
+    );
+  }
+
+  readAllPayments() {
+    this.paymentService.readAllPayments(this.username).subscribe(
+      payments => {this.data2 = payments['payments'];
       }
     );
   }
