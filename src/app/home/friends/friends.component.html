@@ -1,3 +1,18 @@
-<p>
-  friends works!
-</p>
+<app-crud [data]="data" [title]="title" [columns]="columns" [updateAction]="false" [createAction]="false" [readAction]="false">
+</app-crud>
+<mat-card>
+  <mat-card-title>Buscar usuarios</mat-card-title>
+  <mat-card-content>
+    <mat-form-field>
+      <input [(ngModel)]="userSearch" matInput placeholder="Nombre de usuario">
+    </mat-form-field>
+    <button (click)="search()" color="accent" mat-mini-fab>
+      <mat-icon>search</mat-icon>
+    </button>
+    <button (click)="resetSearch()" color="accent" mat-mini-fab>
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-card-content>
+</mat-card>
+<app-crud [data]="data2" [title]="title2" [columns]="columns" [updateAction]="false" [createAction]="false" [deleteAction]="false">
+</app-crud>
