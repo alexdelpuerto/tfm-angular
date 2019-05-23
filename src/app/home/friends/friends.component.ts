@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {UserRegister} from '../users/user-register.model';
+import {Component, OnInit} from '@angular/core';
+import {Friends} from './friends.model';
+import {UserService} from '../users/user.service';
 
 @Component({
   selector: 'app-friends',
@@ -13,19 +14,29 @@ export class FriendsComponent implements OnInit {
   title2 = 'Añadir Amigos';
   columns = ['username', 'name', 'surname'];
   data: any;
-  data2: any;
-  userSearch: UserRegister;
+  data2: Friends[];
+  userSearch: string;
 
-  constructor() {
-    this.userSearch = {username: null, password: null, name: null, surname: null};
+  constructor(private userService: UserService) {
+    this.userSearch = null;
     this.data = [{username: 'user', name: 'name', surname: 'surname'}];
-    this.data2 = [{username: 'nuevo', name: 'name', surname: 'surname'}];
+    this.data2 = null;
   }
 
   ngOnInit() {
   }
 
   resetSearch() {
-    this.userSearch = {username: null, name: null, surname: null, password: null};
+    this.userSearch = null;
+
+  }
+
+  search() {
+    this.userService.readUsers(this.userSearch).subscribe(
+      users => {
+        this.data2 = users['users'];
+        console.log(this.data2);
+      }
+    );
   }
 }

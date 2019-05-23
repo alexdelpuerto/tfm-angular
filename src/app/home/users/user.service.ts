@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {UserLogin} from './user-login.model';
 import {ApiEndpoint} from '../shared/api-endpoint';
 import {UserRegister} from './user-register.model';
+import {Friends} from '../friends/friends.model';
 
 @Injectable()
 export class UserService {
@@ -16,5 +17,9 @@ export class UserService {
 
   register(user: UserRegister): Observable<any> {
     return this.httpService.messageCorrect('Usuario registrado').register(ApiEndpoint.USERS, JSON.stringify(user));
+  }
+
+  readUsers(userSearch: string): Observable<Friends[]> {
+    return this.httpService.get(ApiEndpoint.USERS + '/' + userSearch);
   }
 }

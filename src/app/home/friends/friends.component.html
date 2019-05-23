@@ -4,9 +4,9 @@
   <mat-card-title>Buscar usuarios</mat-card-title>
   <mat-card-content>
     <mat-form-field>
-      <input [(ngModel)]="userSearch.username" matInput placeholder="Nombre de usuario">
+      <input [(ngModel)]="userSearch" matInput placeholder="Nombre de usuario">
     </mat-form-field>
-    <button color="accent" mat-mini-fab>
+    <button (click)="search()" color="accent" mat-mini-fab>
       <mat-icon>search</mat-icon>
     </button>
     <button (click)="resetSearch()" color="accent" mat-mini-fab>
