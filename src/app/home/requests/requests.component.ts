@@ -14,7 +14,7 @@ export class RequestsComponent implements OnInit {
   username: string;
 
   constructor(private requestService: RequestsService) {
-    this.data = [{id: null, userSend: null}];
+    this.data = [{id: null, userSend: null, userReceive: null}];
   }
 
   ngOnInit() {

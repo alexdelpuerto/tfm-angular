@@ -12,4 +12,8 @@ export class RequestsService {
   readAllRequests(username: string): Observable<Request[]> {
     return this.httpService.get(ApiEndpoint.REQUESTS + '/' + username);
   }
+
+  create(request: Request): Observable<any> {
+    return this.httpService.messageCorrect('Solicitud enviada').post(ApiEndpoint.REQUESTS, JSON.stringify(request));
+  }
 }
