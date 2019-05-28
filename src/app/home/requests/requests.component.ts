@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {UserRegister} from '../users/user-register.model';
 
 @Component({
   selector: 'app-requests',
