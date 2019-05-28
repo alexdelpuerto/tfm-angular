@@ -10,6 +10,7 @@ import {UserService} from './home/users/user.service';
 import {EventsService} from './home/events/events.service';
 import {GiftsService} from './home/events/gifts.service';
 import {PaymentsService} from './home/payments/payments.service';
+import {RequestsService} from './home/requests/requests.service';
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import {PaymentsService} from './home/payments/payments.service';
     EventsService,
     GiftsService,
     PaymentsService,
+    RequestsService,
     UserService,
   ],
   bootstrap: [AppComponent]

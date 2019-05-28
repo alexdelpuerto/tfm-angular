@@ -6,6 +6,7 @@ import {
   MatDialogModule,
   MatIconModule,
   MatInputModule,
+  MatListModule,
   MatMenuModule,
   MatSnackBarModule,
   MatToolbarModule
@@ -18,6 +19,7 @@ import {
     MatDialogModule,
     MatIconModule,
     MatInputModule,
+    MatListModule,
     MatMenuModule,
     MatSnackBarModule,
     MatToolbarModule
@@ -28,6 +30,7 @@ import {
     MatDialogModule,
     MatIconModule,
     MatInputModule,
+    MatListModule,
     MatMenuModule,
     MatSnackBarModule,
     MatToolbarModule

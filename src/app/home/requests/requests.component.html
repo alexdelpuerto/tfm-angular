@@ -1,3 +1,14 @@
-<p>
-  requests works!
-</p>
+<mat-list>
+  <mat-card-title>Solicitudes de amistad</mat-card-title>
+  <mat-list-item *ngFor="let item of data">
+    <p id="username">{{item.userSend}}</p>
+    <p *ngIf="item.id!=null"> quiere añadirte como amigo</p>
+    <button *ngIf="item.id!=null" mat-raised-button color="accent" (click)="accept()">
+      Aceptar
+    </button>
+    <button *ngIf="item.id!=null" mat-raised-button (click)="cancel()">
+      Cancelar
+    </button>
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</mat-list>
