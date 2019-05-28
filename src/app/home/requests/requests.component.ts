@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {RequestsService} from './requests.service';
+import {Request} from './request.model';
 
 @Component({
   selector: 'app-requests',
@@ -8,18 +10,16 @@ import { Component, OnInit } from '@angular/core';
 export class RequestsComponent implements OnInit {
 
   static URL = 'requests';
+  data: Request[];
+  username: string;
 
-  title = 'Solicitudes de amistad';
-  columns = ['userReceive'];
-  data: any;
-
-  constructor() { }
+  constructor(private requestService: RequestsService) {
+    this.data = [{id: null, userSend: null}];
+  }
 
   ngOnInit() {
-    this.data = [
-      {username: 'user'},
-      {username: 'user2'}
-    ];
+    this.username = sessionStorage.getItem('username');
+    this.readAllRequests();
   }
 
   accept() {
@@ -30,4 +30,11 @@ export class RequestsComponent implements OnInit {
 
   }
 
+  readAllRequests() {
+    this.requestService.readAllRequests(this.username).subscribe(
+      data => {
+        this.data = data['requests'];
+      }
+    );
+  }
 }

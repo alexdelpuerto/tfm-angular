@@ -4,4 +4,5 @@ export class ApiEndpoint {
   public static EVENTS = '/events';
   public static GIFTS = '/gifts';
   public static PAYMENTS = '/payments';
+  public static REQUESTS = '/requests';
 }
