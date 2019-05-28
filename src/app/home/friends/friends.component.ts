@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Friends} from './friends.model';
 import {UserService} from '../users/user.service';
+import {ConfirmationDialogComponent} from '../../core/confirmation-dialog.component';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-friends',
@@ -17,7 +19,7 @@ export class FriendsComponent implements OnInit {
   data2: Friends[];
   userSearch: string;
 
-  constructor(private userService: UserService) {
+  constructor(private dialog: MatDialog, private userService: UserService) {
     this.userSearch = null;
     this.data = [{username: 'user', name: 'name', surname: 'surname'}];
     this.data2 = null;
@@ -36,6 +38,16 @@ export class FriendsComponent implements OnInit {
       users => {
         this.data2 = users['users'];
         console.log(this.data2);
+      }
+    );
+  }
+
+  read(friend: Friends) {
+    this.dialog.open(ConfirmationDialogComponent).afterClosed().subscribe(
+      (response) => {
+        if (response) {
+          console.log("creando solicitud de amistad para el usuario " + friend.username + ' con id ' + friend.id);
+        }
       }
     );
   }
