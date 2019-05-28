@@ -1,4 +1,5 @@
 export interface Request {
-  id: number;
+  id?: number;
   userSend: string;
+  userReceive: string;
 }
