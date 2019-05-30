@@ -53,7 +53,6 @@ export class FriendsComponent implements OnInit {
     this.dialog.open(ConfirmationDialogComponent).afterClosed().subscribe(
       (response) => {
         if (response) {
-          //console.log('creando solicitud de amistad para el usuario ' + request.userReceive + ' desde ' + request.userSend);
           this.requestService.create(request).subscribe();
         }
       }

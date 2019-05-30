@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {RequestsService} from './requests.service';
 import {Request} from './request.model';
+import {MatDialog} from '@angular/material';
+import {ConfirmationDialogComponent} from '../../core/confirmation-dialog.component';
 
 @Component({
   selector: 'app-requests',
@@ -13,7 +15,7 @@ export class RequestsComponent implements OnInit {
   data: Request[];
   username: string;
 
-  constructor(private requestService: RequestsService) {
+  constructor(private requestService: RequestsService, private dialog: MatDialog) {
     this.data = [{id: null, userSend: null, userReceive: null}];
   }
 
@@ -23,7 +25,13 @@ export class RequestsComponent implements OnInit {
   }
 
   accept() {
-
+    this.dialog.open(ConfirmationDialogComponent).afterClosed().subscribe(
+      (response) => {
+        if (response) {
+          //this.requestService.accept().subscribe();
+        }
+      }
+    );
   }
 
   cancel() {
