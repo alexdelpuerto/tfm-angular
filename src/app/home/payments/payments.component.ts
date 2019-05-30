@@ -53,7 +53,13 @@ export class PaymentsComponent implements OnInit {
     this.dialog.open(ConfirmationDialogComponent).afterClosed().subscribe(
       (response) => {
         if (response) {
-          console.log($paymentsCol.id);
+          this.paymentService.delete($paymentsCol.id).subscribe(
+            (response2) => {
+              if (response2) {
+                this.readAllCollections();
+              }
+            }
+          );
         }
       }
     );
