@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {PaymentsService} from './payments.service';
 import {PaymentsCol} from './paymentsCol.model';
 import {Payments} from './payments.model';
+import {MatDialog} from '@angular/material';
+import {ConfirmationDialogComponent} from '../../core/confirmation-dialog.component';
 
 @Component({
   selector: 'app-payments',
@@ -19,7 +21,7 @@ export class PaymentsComponent implements OnInit {
   columns = ['person', 'price', 'giftname'];
   columns2 = ['buyer', 'price', 'giftname'];
 
-  constructor(private paymentService: PaymentsService) {
+  constructor(private paymentService: PaymentsService, private dialog: MatDialog) {
     this.data = [
       {id: null, person: null, price: null, giftname: null}];
 
@@ -43,6 +45,22 @@ export class PaymentsComponent implements OnInit {
   readAllPayments() {
     this.paymentService.readAllPayments(this.username).subscribe(
       payments => {this.data2 = payments['payments'];
+      }
+    );
+  }
+
+  delete($paymentsCol: PaymentsCol) {
+    this.dialog.open(ConfirmationDialogComponent).afterClosed().subscribe(
+      (response) => {
+        if (response) {
+          this.paymentService.delete($paymentsCol.id).subscribe(
+            (response2) => {
+              if (response2) {
+                this.readAllCollections();
+              }
+            }
+          );
+        }
       }
     );
   }

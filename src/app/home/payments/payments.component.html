@@ -1,4 +1,4 @@
-<app-crud [data]="data" [title]="title" [columns]="columns" [updateAction]="false" [createAction]="false" [readAction]="false">
+<app-crud [data]="data" [title]="title" [columns]="columns" [updateAction]="false" [createAction]="false" [readAction]="false" (delete)="delete($event)">
 </app-crud>
 <app-crud [data]="data2" [title]="title2" [columns]="columns2" [updateAction]="false" [createAction]="false" [readAction]="false" [deleteAction]="false">
 </app-crud>

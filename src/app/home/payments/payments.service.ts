@@ -15,11 +15,15 @@ export class PaymentsService {
   }
 
   readAllCollections(username: string): Observable<PaymentsCol[]> {
-    return this.httpService.get(ApiEndpoint.PAYMENTS + 'Col/' + username);
+    return this.httpService.get(ApiEndpoint.PAYMENTS_COL + '/' + username);
   }
 
 
   readAllPayments(username: string): Observable<Payments[]> {
     return this.httpService.get(ApiEndpoint.PAYMENTS + '/' + username);
+  }
+
+  delete(paymentId: number): Observable<any> {
+    return this.httpService.messageCorrect('Pago borrado').delete(ApiEndpoint.PAYMENTS + '/' + paymentId);
   }
 }
