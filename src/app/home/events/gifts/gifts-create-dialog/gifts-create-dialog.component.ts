@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA} from '@angular/material';
 import {Gifts} from '../gifts.model';
-import {GiftsService} from '../../gifts.service';
+import {GiftsService} from '../gifts.service';
 
 @Component({
   selector: 'app-gifts-create-dialog',

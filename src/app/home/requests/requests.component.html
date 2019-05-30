@@ -3,7 +3,7 @@
   <mat-list-item *ngFor="let item of data">
     <p id="username">{{item.userSend}}</p>
     <p *ngIf="item.id!=null"> quiere añadirte como amigo</p>
-    <button *ngIf="item.id!=null" mat-raised-button color="accent" (click)="accept()">
+    <button *ngIf="item.id!=null" mat-raised-button color="accent" (click)="accept(item)">
       Aceptar
     </button>
     <button *ngIf="item.id!=null" mat-raised-button (click)="cancel()">

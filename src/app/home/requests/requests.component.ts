@@ -24,11 +24,11 @@ export class RequestsComponent implements OnInit {
     this.readAllRequests();
   }
 
-  accept() {
-    this.dialog.open(ConfirmationDialogComponent).afterClosed().subscribe(
-      (response) => {
+  accept(request: Request) {
+    this.requestService.accept(request).subscribe(
+      response => {
         if (response) {
-          //this.requestService.accept().subscribe();
+          this.readAllRequests();
         }
       }
     );
