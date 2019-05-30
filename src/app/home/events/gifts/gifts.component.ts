@@ -3,7 +3,7 @@ import {Gifts} from './gifts.model';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import {GiftsCreateDialogComponent} from './gifts-create-dialog/gifts-create-dialog.component';
 import {ConfirmationDialogComponent} from '../../../core/confirmation-dialog.component';
-import {GiftsService} from '../gifts.service';
+import {GiftsService} from './gifts.service';
 import {PaymentsService} from '../../payments/payments.service';
 
 @Component({

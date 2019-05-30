@@ -8,7 +8,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CoreModule} from './core/core.module';
 import {UserService} from './home/users/user.service';
 import {EventsService} from './home/events/events.service';
-import {GiftsService} from './home/events/gifts.service';
+import {GiftsService} from './home/events/gifts/gifts.service';
 import {PaymentsService} from './home/payments/payments.service';
 import {RequestsService} from './home/requests/requests.service';
 

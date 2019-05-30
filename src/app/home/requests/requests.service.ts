@@ -16,4 +16,8 @@ export class RequestsService {
   create(request: Request): Observable<any> {
     return this.httpService.messageCorrect('Solicitud enviada').post(ApiEndpoint.REQUESTS, JSON.stringify(request));
   }
+
+  accept(request: Request): Observable<any> {
+    return this.httpService.messageCorrect('Solicitud aceptada').post(ApiEndpoint.REQUESTS + '/accept', JSON.stringify(request));
+  }
 }

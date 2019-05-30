@@ -4,7 +4,7 @@ import {Events} from './events.model';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import {EventsCreateDialogComponent} from './events-create-dialog/events-create-dialog.component';
 import {Gifts} from './gifts/gifts.model';
-import {GiftsService} from './gifts.service';
+import {GiftsService} from './gifts/gifts.service';
 
 @Component({
   selector: 'app-events',

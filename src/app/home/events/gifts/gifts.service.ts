@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpService} from '../../core/http.service';
+import {HttpService} from '../../../core/http.service';
 import {Observable} from 'rxjs';
-import {Gifts} from './gifts/gifts.model';
-import {ApiEndpoint} from '../shared/api-endpoint';
+import {Gifts} from './gifts.model';
+import {ApiEndpoint} from '../../shared/api-endpoint';
 
 @Injectable()
 export class GiftsService {
