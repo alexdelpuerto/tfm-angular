@@ -17,22 +17,30 @@ export class FriendsComponent implements OnInit {
   title = 'Tus Amigos';
   title2 = 'Añadir Amigos';
   columns = ['username', 'name', 'surname'];
-  data: any;
+  data: Friends[];
   data2: Friends[];
   userSearch: string;
 
   constructor(private dialog: MatDialog, private userService: UserService, private requestService: RequestsService) {
     this.userSearch = null;
-    this.data = [{username: 'user', name: 'name', surname: 'surname'}];
+    this.data = null;
     this.data2 = null;
   }
 
   ngOnInit() {
+    this.readAll();
   }
 
   resetSearch() {
     this.userSearch = null;
 
+  }
+
+  readAll() {
+    this.userService.readFriends(sessionStorage.getItem('username')).subscribe(
+      friends => { this.data = friends['friends'];
+      }
+    );
   }
 
   search() {
@@ -44,7 +52,7 @@ export class FriendsComponent implements OnInit {
     );
   }
 
-  read(friend: Friends) {
+  sendRequest(friend: Friends) {
     let request: Request;
     request = {
       userSend: sessionStorage.getItem('username'),

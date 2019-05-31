@@ -7,4 +7,5 @@ export class ApiEndpoint {
   public static PAYMENTS_COL = ApiEndpoint.PAYMENTS + 'Col';
   public static REQUESTS = '/requests';
   public static ACCEPT = '/accept';
+  public static FRIENDS = '/friends';
 }

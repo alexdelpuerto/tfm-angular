@@ -22,11 +22,8 @@ export class PaymentsComponent implements OnInit {
   columns2 = ['buyer', 'price', 'giftname'];
 
   constructor(private paymentService: PaymentsService, private dialog: MatDialog) {
-    this.data = [
-      {id: null, person: null, price: null, giftname: null}];
-
-    this.data2 = [
-      {id: null, buyer: null, price: null, giftname: null}];
+    this.data = null;
+    this.data2 = null;
   }
 
   ngOnInit() {

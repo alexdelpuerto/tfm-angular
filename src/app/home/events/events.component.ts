@@ -24,8 +24,7 @@ export class EventsComponent implements OnInit {
   @Output() emitter = new EventEmitter<Gifts[]>();
 
   constructor(private dialog: MatDialog, private eventService: EventsService, private giftService: GiftsService) {
-    this.data = [
-      {id: null, name: null, budget: null, creator: null}];
+    this.data = null;
   }
 
   ngOnInit() {

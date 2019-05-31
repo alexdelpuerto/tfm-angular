@@ -19,6 +19,10 @@ export class UserService {
     return this.httpService.messageCorrect('Usuario registrado').register(ApiEndpoint.USERS, JSON.stringify(user));
   }
 
+  readFriends(username: string) {
+    return this.httpService.get(ApiEndpoint.USERS + ApiEndpoint.FRIENDS + '/' + username);
+  }
+
   readUsers(userSearch: string): Observable<Friends[]> {
     return this.httpService.get(ApiEndpoint.USERS + '/' + userSearch);
   }
