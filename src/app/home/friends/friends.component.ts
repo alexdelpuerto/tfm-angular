@@ -28,11 +28,19 @@ export class FriendsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.readAll();
   }
 
   resetSearch() {
     this.userSearch = null;
 
+  }
+
+  readAll() {
+    this.userService.readFriends(sessionStorage.getItem('username')).subscribe(
+      friends => { this.data = friends['friends'];
+      }
+    );
   }
 
   search() {
@@ -44,7 +52,7 @@ export class FriendsComponent implements OnInit {
     );
   }
 
-  read(friend: Friends) {
+  sendRequest(friend: Friends) {
     let request: Request;
     request = {
       userSend: sessionStorage.getItem('username'),
