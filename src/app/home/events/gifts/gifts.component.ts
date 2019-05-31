@@ -20,9 +20,7 @@ export class GiftsComponent implements OnInit {
   @Input() data: Gifts[];
 
   constructor(private dialog: MatDialog, private giftService: GiftsService, private paymentService: PaymentsService) {
-    this.data = [
-      {id: null, name: null, price: null, description: null, bought: null}
-    ];
+    this.data = null;
   }
 
   ngOnInit() {
