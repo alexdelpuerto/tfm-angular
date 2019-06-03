@@ -8,4 +8,5 @@ export class ApiEndpoint {
   public static REQUESTS = '/requests';
   public static ACCEPT = '/accept';
   public static FRIENDS = '/friends';
+  public static SEARCH = '/search';
 }

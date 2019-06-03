@@ -5,6 +5,7 @@ import {MatDialog, MatDialogConfig} from '@angular/material';
 import {EventsCreateDialogComponent} from './events-create-dialog/events-create-dialog.component';
 import {Gifts} from './gifts/gifts.model';
 import {GiftsService} from './gifts/gifts.service';
+import {MembersDialogComponent} from './members-dialog/members-dialog.component';
 
 @Component({
   selector: 'app-events',
@@ -62,5 +63,9 @@ export class EventsComponent implements OnInit {
         this.gifts = gifts['gifts'];
       }
     );
+  }
+
+  editMembers(event: Events) {
+    this.dialog.open(MembersDialogComponent).afterClosed().subscribe();
   }
 }

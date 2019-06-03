@@ -24,6 +24,6 @@ export class UserService {
   }
 
   readUsers(userSearch: string): Observable<Friends[]> {
-    return this.httpService.get(ApiEndpoint.USERS + '/' + userSearch);
+    return this.httpService.get(ApiEndpoint.USERS + ApiEndpoint.SEARCH + '/' + userSearch);
   }
 }

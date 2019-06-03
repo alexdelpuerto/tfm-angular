@@ -9,6 +9,7 @@ import { RequestsComponent } from './home/requests/requests.component';
 import { EventsCreateDialogComponent } from './home/events/events-create-dialog/events-create-dialog.component';
 import { GiftsComponent } from './home/events/gifts/gifts.component';
 import {GiftsCreateDialogComponent} from './home/events/gifts/gifts-create-dialog/gifts-create-dialog.component';
+import {MembersDialogComponent} from './home/events/members-dialog/members-dialog.component';
 
 const routes: Routes = [
     {path: '', pathMatch: 'full', redirectTo: WelcomeComponent.URL},
@@ -41,6 +42,7 @@ export class AppRoutingModule {
 
   static DIALOGS = [
     EventsCreateDialogComponent,
-    GiftsCreateDialogComponent
+    GiftsCreateDialogComponent,
+    MembersDialogComponent
   ];
 }
