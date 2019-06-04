@@ -1,0 +1,7 @@
+<div>
+  <h3 mat-dialog-title>Usuarios del Evento</h3>
+  <p *ngFor="let item of dataMembers">{{item.username}}</p>
+  <mat-divider></mat-divider>
+  <app-crud [data]="dataFriends" [title]="title" [columns]="columns" [createAction]="false" [updateAction]="false" [deleteAction]="false" (read)="addMember($event)">
+  </app-crud>
+</div>
