@@ -15,15 +15,7 @@ export class MembersDialogComponent implements OnInit {
   title = 'Añadir amigos al evento';
 
   constructor(private userService: UserService) {
-    this.dataFriends = [
-      {id: 0, username: 'username', name: 'name', surname: 'surname'},
-      {id: 0, username: 'username', name: 'name', surname: 'surname'}
-    ];
-/*
-    this.dataMembers = [
-      {id: 0, username: 'user', name: 'dasd', surname: 'asdas'},
-      {id: 1, username: 'asdad', name: 'asdad', surname: 'asd'}
-    ];*/
+    this.dataFriends = null;
     this.dataMembers = null;
   }
 

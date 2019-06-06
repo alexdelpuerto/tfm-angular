@@ -18,6 +18,7 @@ import {UserService} from '../home/users/user.service';
 import {HttpClientModule} from '@angular/common/http';
 import { CrudComponent } from './crud.component';
 import { ConfirmationDialogComponent } from './confirmation-dialog.component';
+import { UserEditDialogComponent } from './user-edit-dialog.component';
 
 @NgModule({
   imports: [
@@ -36,17 +37,20 @@ import { ConfirmationDialogComponent } from './confirmation-dialog.component';
     CrudComponent,
     LoginDialogComponent,
     RegisterDialogComponent,
+    UserEditDialogComponent,
   ],
   exports: [
     ConfirmationDialogComponent,
     CrudComponent,
     LoginDialogComponent,
-    RegisterDialogComponent
+    RegisterDialogComponent,
+    UserEditDialogComponent
   ],
     entryComponents: [
       ConfirmationDialogComponent,
       LoginDialogComponent,
-      RegisterDialogComponent
+      RegisterDialogComponent,
+      UserEditDialogComponent
     ],
   providers: [
     HttpService,

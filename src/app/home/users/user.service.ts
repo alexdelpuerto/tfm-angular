@@ -29,11 +29,11 @@ export class UserService {
   }
 
   readUsersEvent(eventId: number): Observable<Friends[]> {
-    return this.httpService.get(ApiEndpoint.USERS + '/' + eventId);
+    return this.httpService.get(ApiEndpoint.USER_EVENT + '/' + eventId);
   }
 
   addUser(eventId: number, membersAdd: MembersAdd): Observable<any> {
-    return this.httpService.messageCorrect('Usuario añadido al evento').put(ApiEndpoint.USERS + '/' + eventId,
+    return this.httpService.messageCorrect('Usuario añadido al evento').put(ApiEndpoint.USER_EVENT + '/' + eventId,
       JSON.stringify(membersAdd));
   }
 }
