@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {LoginDialogComponent} from './login-dialog.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RegisterDialogComponent } from './register-dialog.component';
 
 import {
@@ -30,7 +30,8 @@ import { UserEditDialogComponent } from './user-edit-dialog.component';
     MatDialogModule,
     MatIconModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
+    ReactiveFormsModule
   ],
   declarations: [
     ConfirmationDialogComponent,

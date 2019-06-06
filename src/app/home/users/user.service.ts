@@ -36,4 +36,12 @@ export class UserService {
     return this.httpService.messageCorrect('Usuario añadido al evento').put(ApiEndpoint.USER_EVENT + '/' + eventId,
       JSON.stringify(membersAdd));
   }
+
+  readUser(userId: number): Observable<UserRegister> {
+    return this.httpService.get(ApiEndpoint.USERS + '/' + userId);
+  }
+
+  updateUser(userId: number, user: UserRegister): Observable<any> {
+    return this.httpService.messageCorrect('Usuario editado').put(ApiEndpoint.USERS + '/' + userId, JSON.stringify(user));
+  }
 }
