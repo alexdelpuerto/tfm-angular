@@ -1,0 +1,24 @@
+<h3 mat-dialog-title>Editar datos Usuario</h3>
+<form [formGroup]="userForm">
+  <mat-dialog-content>
+    <mat-form-field>
+      <input matInput type="text" placeholder="Nombre de usuario" formControlName="username" pattern="^[0-9a-zA-Z]+$" required maxlength="20"/>
+      <mat-error>Campo obligatorio. Sólo números y letras</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="password" placeholder="Contraseña" formControlName="password" required maxlength="20"/>
+      <mat-error>Campo obligatorio</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" placeholder="Nombre" formControlName="name" maxlength="20"/>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" placeholder="Apellidos" formControlName="surname" maxlength="20"/>
+    </mat-form-field>
+    <mat-label>Los campos marcados con * son obligatorios</mat-label>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close mat-raised-button color="primary" (click)="edit()">Editar</button>
+    <button mat-button mat-dialog-close mat-raised-button>Cancelar</button>
+  </mat-dialog-actions>
+</form>

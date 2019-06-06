@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {LoginDialogComponent} from './login-dialog.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RegisterDialogComponent } from './register-dialog.component';
 
 import {
@@ -18,6 +18,7 @@ import {UserService} from '../home/users/user.service';
 import {HttpClientModule} from '@angular/common/http';
 import { CrudComponent } from './crud.component';
 import { ConfirmationDialogComponent } from './confirmation-dialog.component';
+import { UserEditDialogComponent } from './user-edit-dialog.component';
 
 @NgModule({
   imports: [
@@ -29,24 +30,28 @@ import { ConfirmationDialogComponent } from './confirmation-dialog.component';
     MatDialogModule,
     MatIconModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
+    ReactiveFormsModule
   ],
   declarations: [
     ConfirmationDialogComponent,
     CrudComponent,
     LoginDialogComponent,
     RegisterDialogComponent,
+    UserEditDialogComponent,
   ],
   exports: [
     ConfirmationDialogComponent,
     CrudComponent,
     LoginDialogComponent,
-    RegisterDialogComponent
+    RegisterDialogComponent,
+    UserEditDialogComponent
   ],
     entryComponents: [
       ConfirmationDialogComponent,
       LoginDialogComponent,
-      RegisterDialogComponent
+      RegisterDialogComponent,
+      UserEditDialogComponent
     ],
   providers: [
     HttpService,

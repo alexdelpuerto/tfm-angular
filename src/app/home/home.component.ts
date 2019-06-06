@@ -4,6 +4,9 @@ import {EventsComponent} from './events/events.component';
 import {FriendsComponent} from './friends/friends.component';
 import {PaymentsComponent} from './payments/payments.component';
 import {RequestsComponent} from './requests/requests.component';
+import {MatDialog, MatDialogConfig} from '@angular/material';
+import {UserEditDialogComponent} from '../core/user-edit-dialog.component';
+import {UserService} from './users/user.service';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +20,7 @@ export class HomeComponent implements OnInit {
   username: string = undefined;
   userId: string = undefined;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private dialog: MatDialog, private userService: UserService) {
   }
 
   ngOnInit() {
@@ -43,5 +46,18 @@ export class HomeComponent implements OnInit {
 
   requests() {
     this.router.navigate([HomeComponent.URL, RequestsComponent.URL]);
+  }
+
+  edit() {
+    this.userService.readUser(Number.parseInt(sessionStorage.getItem('userId'), 10)).subscribe(response => {
+      const dialogConfig: MatDialogConfig = {
+        data: {
+          user: response
+        }
+      };
+      this.dialog.open(UserEditDialogComponent, dialogConfig);
+    }, error => {
+
+    });
   }
 }
