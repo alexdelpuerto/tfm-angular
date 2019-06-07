@@ -5,6 +5,7 @@ import {GiftsCreateDialogComponent} from './gifts-create-dialog/gifts-create-dia
 import {ConfirmationDialogComponent} from '../../../core/confirmation-dialog.component';
 import {GiftsService} from './gifts.service';
 import {PaymentsService} from '../../payments/payments.service';
+import {Payments} from '../../payments/payments.model';
 
 @Component({
   selector: 'app-gifts',
@@ -42,14 +43,18 @@ export class GiftsComponent implements OnInit {
   }
 
   buy(gift: Gifts) {
-    const json = {
-      giftId: gift.id,
-      buyer: sessionStorage.getItem('username')
-      };
+    let payment: Payments;
+    payment = {
+      id: null,
+      buyer: sessionStorage.getItem('username'),
+      giftname: gift.name,
+      price: null
+    };
+
     this.dialog.open(ConfirmationDialogComponent).afterClosed().subscribe(
       (response) => {
         if (response) {
-          this.paymentService.create(JSON.stringify(json)).subscribe();
+          this.paymentService.create(payment).subscribe();
         }
       }
     );

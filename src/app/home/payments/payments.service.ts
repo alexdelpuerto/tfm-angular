@@ -10,8 +10,8 @@ export class PaymentsService {
 
   constructor(private httpService: HttpService) { }
 
-  create(json: string): Observable<any> {
-    return this.httpService.messageCorrect('Regalo comprado').post(ApiEndpoint.PAYMENTS, json);
+  create(payment: Payments): Observable<any> {
+    return this.httpService.messageCorrect('Regalo comprado').post(ApiEndpoint.PAYMENTS, JSON.stringify(payment));
   }
 
   readAllCollections(username: string): Observable<PaymentsCol[]> {
