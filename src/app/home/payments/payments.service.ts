@@ -14,12 +14,12 @@ export class PaymentsService {
     return this.httpService.messageCorrect('Regalo comprado').post(ApiEndpoint.PAYMENTS, JSON.stringify(payment));
   }
 
-  readAllCollections(username: string): Observable<PaymentsCol[]> {
+  readCollections(username: string): Observable<PaymentsCol[]> {
     return this.httpService.get(ApiEndpoint.PAYMENTS_COL + '/' + username);
   }
 
 
-  readAllPayments(username: string): Observable<Payments[]> {
+  readPayments(username: string): Observable<Payments[]> {
     return this.httpService.get(ApiEndpoint.PAYMENTS + '/' + username);
   }
 

@@ -30,11 +30,11 @@ export class EventsComponent implements OnInit {
 
   ngOnInit() {
     this.userId = sessionStorage.getItem('userId');
-    this.readAll();
+    this.readEvents();
   }
 
-  readAll() {
-    this.eventService.readAll(Number.parseInt(this.userId, 10)).subscribe(
+  readEvents() {
+    this.eventService.readEvents(Number.parseInt(this.userId, 10)).subscribe(
       events => {this.data = events['events'];
       }
     );
@@ -49,7 +49,7 @@ export class EventsComponent implements OnInit {
     this.dialog.open(EventsCreateDialogComponent, dialogConfig).afterClosed().subscribe(
       response => {
         if (response) {
-          this.readAll();
+          this.readEvents();
         }
       }
     );

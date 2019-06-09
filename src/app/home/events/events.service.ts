@@ -10,7 +10,7 @@ export class EventsService {
   constructor(private httpService: HttpService) {
   }
 
-  readAll(userId: number): Observable<Events[]> {
+  readEvents(userId: number): Observable<Events[]> {
     return this.httpService.get(ApiEndpoint.EVENTS + '/' + userId);
   }
 

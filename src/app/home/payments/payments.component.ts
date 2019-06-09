@@ -28,19 +28,19 @@ export class PaymentsComponent implements OnInit {
 
   ngOnInit() {
     this.username = sessionStorage.getItem('username');
-    this.readAllCollections();
-    this.readAllPayments();
+    this.readCollections();
+    this.readPayments();
   }
 
-  readAllCollections() {
-    this.paymentService.readAllCollections(this.username).subscribe(
+  readCollections() {
+    this.paymentService.readCollections(this.username).subscribe(
       payments => {this.data = payments['collections'];
       }
     );
   }
 
-  readAllPayments() {
-    this.paymentService.readAllPayments(this.username).subscribe(
+  readPayments() {
+    this.paymentService.readPayments(this.username).subscribe(
       payments => {this.data2 = payments['payments'];
       }
     );
@@ -53,7 +53,7 @@ export class PaymentsComponent implements OnInit {
           this.paymentService.delete($paymentsCol.id).subscribe(
             (response2) => {
               if (response2) {
-                this.readAllCollections();
+                this.readCollections();
               }
             }
           );
