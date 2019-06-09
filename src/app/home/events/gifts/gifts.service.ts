@@ -15,7 +15,7 @@ export class GiftsService {
     return this.httpService.get(ApiEndpoint.GIFTS + '/' + eventId);
   }
 
-  createGift(gift: Gifts): Observable<Gifts> {
+  create(gift: Gifts): Observable<Gifts> {
     return this.httpService.messageCorrect('Regalo creado correctamente').post(ApiEndpoint.GIFTS, JSON.stringify(gift));
   }
 }

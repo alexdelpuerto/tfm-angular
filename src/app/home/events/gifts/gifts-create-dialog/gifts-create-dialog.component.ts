@@ -28,7 +28,7 @@ export class GiftsCreateDialogComponent implements OnInit {
   }
 
   createGift() {
-    this.giftService.createGift(this.giftForm.value).subscribe(result => {
+    this.giftService.create(this.giftForm.value).subscribe(result => {
       if (result) {
         return true;
       }

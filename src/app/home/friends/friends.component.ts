@@ -44,7 +44,7 @@ export class FriendsComponent implements OnInit {
   }
 
   search() {
-    this.userService.readUsers(this.userSearch).subscribe(
+    this.userService.readUsers(sessionStorage.getItem('username'), this.userSearch).subscribe(
       users => {
         this.data2 = users['users'];
         console.log(this.data2);

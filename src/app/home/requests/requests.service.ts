@@ -9,7 +9,7 @@ export class RequestsService {
 
   constructor(private httpService: HttpService) { }
 
-  readAllRequests(username: string): Observable<Request[]> {
+  readRequests(username: string): Observable<Request[]> {
     return this.httpService.get(ApiEndpoint.REQUESTS + '/' + username);
   }
 

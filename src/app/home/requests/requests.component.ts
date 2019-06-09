@@ -37,7 +37,7 @@ export class RequestsComponent implements OnInit {
   }
 
   readAllRequests() {
-    this.requestService.readAllRequests(this.username).subscribe(
+    this.requestService.readRequests(this.username).subscribe(
       data => {
         this.data = data['requests'];
       }
