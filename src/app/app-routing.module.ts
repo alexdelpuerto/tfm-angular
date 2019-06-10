@@ -8,7 +8,7 @@ import { PaymentsComponent } from './home/payments/payments.component';
 import { RequestsComponent } from './home/requests/requests.component';
 import { EventsCreateDialogComponent } from './home/events/events-create-dialog/events-create-dialog.component';
 import { GiftsComponent } from './home/events/gifts/gifts.component';
-import {GiftsCreateDialogComponent} from './home/events/gifts/gifts-create-dialog/gifts-create-dialog.component';
+import {GiftsCreateUpdateDialogComponent} from './home/events/gifts/gifts-create-update-dialog/gifts-create-update-dialog.component';
 import {MembersDialogComponent} from './home/events/members-dialog/members-dialog.component';
 
 const routes: Routes = [
@@ -42,7 +42,7 @@ export class AppRoutingModule {
 
   static DIALOGS = [
     EventsCreateDialogComponent,
-    GiftsCreateDialogComponent,
+    GiftsCreateUpdateDialogComponent,
     MembersDialogComponent
   ];
 }

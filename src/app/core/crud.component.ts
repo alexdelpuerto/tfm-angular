@@ -37,7 +37,7 @@ export class CrudComponent {
   }
 
   onUpdate(item) {
-    this.read.emit(item);
+    this.update.emit(item);
   }
 
   onDelete(item) {
