@@ -10,4 +10,5 @@ export class ApiEndpoint {
   public static FRIENDS = '/friends';
   public static SEARCH = '/search';
   public static USER_EVENT = ApiEndpoint.USERS + '/event';
+  public static GIFT_EVENT = ApiEndpoint.GIFTS + '/event';
 }

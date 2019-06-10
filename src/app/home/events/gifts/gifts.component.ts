@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Gifts} from './gifts.model';
 import {MatDialog, MatDialogConfig} from '@angular/material';
-import {GiftsCreateDialogComponent} from './gifts-create-dialog/gifts-create-dialog.component';
+import {GiftsCreateUpdateDialogComponent} from './gifts-create-update-dialog/gifts-create-update-dialog.component';
 import {ConfirmationDialogComponent} from '../../../core/confirmation-dialog.component';
 import {GiftsService} from './gifts.service';
 import {PaymentsService} from '../../payments/payments.service';
@@ -30,11 +30,12 @@ export class GiftsComponent implements OnInit {
   create() {
     const dialogConfig: MatDialogConfig = {
       data: {
-        gift: {}
+        gift: {},
+        mode: 'Crear'
       }
     };
 
-    this.dialog.open(GiftsCreateDialogComponent, dialogConfig).afterClosed().subscribe(
+    this.dialog.open(GiftsCreateUpdateDialogComponent, dialogConfig).afterClosed().subscribe(
       response => {
         if (response) {
         }
@@ -56,6 +57,31 @@ export class GiftsComponent implements OnInit {
         if (response) {
           this.paymentService.create(payment).subscribe();
         }
+      }
+    );
+  }
+
+  edit(gift: Gifts) {
+    let dialogConfig: MatDialogConfig = null;
+
+    this.giftService.readGift(gift.id).subscribe(
+      result => {
+        dialogConfig = {
+          data: {
+            mode: 'Editar',
+            gift: result['gift']
+          }
+        };
+
+        this.dialog.open(GiftsCreateUpdateDialogComponent, dialogConfig).afterClosed().subscribe(
+          response => {
+            if (response) {
+              this.giftService.readGifts(Number.parseInt(sessionStorage.getItem('eventId'), 10)).subscribe(
+                giftList => this.data  = giftList
+              );
+            }
+          }
+        );
       }
     );
   }
