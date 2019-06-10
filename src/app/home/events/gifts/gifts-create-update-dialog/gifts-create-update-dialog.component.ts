@@ -5,17 +5,19 @@ import {Gifts} from '../gifts.model';
 import {GiftsService} from '../gifts.service';
 
 @Component({
-  selector: 'app-gifts-create-dialog',
-  templateUrl: './gifts-create-dialog.component.html',
-  styleUrls: ['./gifts-create-dialog.component.css']
+  selector: 'app-gifts-create-update-dialog',
+  templateUrl: './gifts-create-update-dialog.component.html',
+  styleUrls: ['./gifts-create-update-dialog.component.css']
 })
-export class GiftsCreateDialogComponent implements OnInit {
+export class GiftsCreateUpdateDialogComponent implements OnInit {
 
   gift: Gifts;
   giftForm: FormGroup;
+  modeDialog: string;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private giftService: GiftsService) {
     this.gift = data.gift;
+    this.modeDialog = data.mode;
   }
 
   ngOnInit() {
@@ -27,11 +29,31 @@ export class GiftsCreateDialogComponent implements OnInit {
     });
   }
 
+  createOrEdit() {
+    if (this.modeDialog === 'Crear') {
+      this.createGift();
+    } else {
+      this.updateGift();
+    }
+  }
+
   createGift() {
-    this.giftService.create(this.giftForm.value).subscribe(result => {
-      if (result) {
-        return true;
+    this.giftService.create(this.giftForm.value).subscribe(
+      result => {
+        if (result) {
+          return true;
+        }
       }
-    });
+    );
+  }
+
+  updateGift() {
+    this.giftService.update(this.gift.id, this.giftForm.value).subscribe(
+      result => {
+        if (result) {
+          return true;
+        }
+      }
+    );
   }
 }
