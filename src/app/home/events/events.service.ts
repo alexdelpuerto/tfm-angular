@@ -11,10 +11,18 @@ export class EventsService {
   }
 
   readEvents(userId: number): Observable<Events[]> {
-    return this.httpService.get(ApiEndpoint.EVENTS + '/' + userId);
+    return this.httpService.get(ApiEndpoint.EVENT_USER + '/' + userId);
   }
 
   create(event: Events): Observable<Events> {
     return this.httpService.messageCorrect('Evento creado correctamente').post(ApiEndpoint.EVENTS, JSON.stringify(event));
+  }
+
+  readEvent(eventId: number): Observable<Events> {
+    return this.httpService.get(ApiEndpoint.EVENTS + '/' + eventId);
+  }
+
+  update(eventId: number, event: Events): Observable<any> {
+    return this.httpService.messageCorrect('Evento editado').put(ApiEndpoint.EVENTS + '/' + eventId, JSON.stringify(event));
   }
 }
