@@ -44,8 +44,8 @@ export class CrudComponent {
     this.delete.emit((item));
   }
 
-  onEditMembers() {
-    this.editMembers.emit();
+  onEditMembers(item) {
+    this.editMembers.emit(item);
   }
 
   onBuy(item) {

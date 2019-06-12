@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {Friends} from '../../friends/friends.model';
 import {UserService} from '../../users/user.service';
 import {MembersAdd} from './members-add.model';
+import {MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
   selector: 'app-members-dialog',
@@ -13,8 +14,10 @@ export class MembersDialogComponent implements OnInit {
   dataFriends: Friends[];
   columns = ['username', 'name'];
   title = 'Añadir amigos al evento';
+  eventId: number;
 
-  constructor(private userService: UserService) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private userService: UserService) {
+    this.eventId = data.eventId;
     this.dataFriends = null;
     this.dataMembers = null;
   }
@@ -25,7 +28,7 @@ export class MembersDialogComponent implements OnInit {
   }
 
   readUsersEvent() {
-    this.userService.readUsersEvent(Number.parseInt(sessionStorage.getItem('eventId'), 10)).subscribe(
+    this.userService.readUsersEvent(this.eventId).subscribe(
       users => {
         this.dataMembers = users['users'];
       }
@@ -45,7 +48,7 @@ export class MembersDialogComponent implements OnInit {
     memberAdd = {
       id: friend.id,
     };
-    this.userService.addUser(Number.parseInt(sessionStorage.getItem('eventId'), 10), memberAdd).subscribe(
+    this.userService.addUser(this.eventId, memberAdd).subscribe(
       result => {
         if (result) {
           return true;

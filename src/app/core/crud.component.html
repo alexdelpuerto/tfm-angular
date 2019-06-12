@@ -30,7 +30,7 @@
           <button (click)="onDelete(item)" *ngIf="deleteAction==true" mat-button mat-icon-button matSuffix>
             <mat-icon color="warn">delete</mat-icon>
           </button>
-          <button (click)="onEditMembers()" *ngIf="editMembersAction==true" mat-button mat-icon-button matSuffix>
+          <button (click)="onEditMembers(item)" *ngIf="editMembersAction==true" mat-button mat-icon-button matSuffix>
             <mat-icon color="warn">person_add</mat-icon>
           </button>
         </mat-cell>

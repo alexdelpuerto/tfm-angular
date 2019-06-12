@@ -2,7 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {EventsService} from './events.service';
 import {Events} from './events.model';
 import {MatDialog, MatDialogConfig} from '@angular/material';
-import {EventsCreateDialogComponent} from './events-create-dialog/events-create-dialog.component';
+import {EventsCreateUpdateDialogComponent} from './events-create-update-dialog/events-create-update-dialog.component';
 import {Gifts} from './gifts/gifts.model';
 import {GiftsService} from './gifts/gifts.service';
 import {MembersDialogComponent} from './members-dialog/members-dialog.component';
@@ -43,10 +43,11 @@ export class EventsComponent implements OnInit {
   create() {
     const dialogConfig: MatDialogConfig = {
       data: {
-        event: {}
+        event: {},
+        mode: 'Crear'
       }
     };
-    this.dialog.open(EventsCreateDialogComponent, dialogConfig).afterClosed().subscribe(
+    this.dialog.open(EventsCreateUpdateDialogComponent, dialogConfig).afterClosed().subscribe(
       response => {
         if (response) {
           this.readEvents();
@@ -66,6 +67,37 @@ export class EventsComponent implements OnInit {
   }
 
   editMembers(event: Events) {
-    this.dialog.open(MembersDialogComponent).afterClosed().subscribe();
+    let dialogConfig: MatDialogConfig;
+    dialogConfig = {
+      data: {
+        eventId: event.id
+      }
+    };
+    this.dialog.open(MembersDialogComponent, dialogConfig).afterClosed().subscribe();
+  }
+
+  edit(event: Events) {
+    let dialogConfig: MatDialogConfig = null;
+
+    this.eventService.readEvent(event.id).subscribe(
+      result => {
+        dialogConfig = {
+          data: {
+            mode: 'Editar',
+            event: result['event']
+          }
+        };
+
+        this.dialog.open(EventsCreateUpdateDialogComponent, dialogConfig).afterClosed().subscribe(
+          response => {
+            if (response) {
+              this.eventService.readEvents(Number.parseInt(sessionStorage.getItem('userId'), 10)).subscribe(
+                eventList => this.data  = eventList
+              );
+            }
+          }
+        );
+      }
+    );
   }
 }
