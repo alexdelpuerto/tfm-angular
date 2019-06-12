@@ -6,7 +6,7 @@ import { EventsComponent } from './home/events/events.component';
 import { FriendsComponent } from './home/friends/friends.component';
 import { PaymentsComponent } from './home/payments/payments.component';
 import { RequestsComponent } from './home/requests/requests.component';
-import { EventsCreateDialogComponent } from './home/events/events-create-dialog/events-create-dialog.component';
+import { EventsCreateUpdateDialogComponent } from './home/events/events-create-update-dialog/events-create-update-dialog.component';
 import { GiftsComponent } from './home/events/gifts/gifts.component';
 import {GiftsCreateUpdateDialogComponent} from './home/events/gifts/gifts-create-update-dialog/gifts-create-update-dialog.component';
 import {MembersDialogComponent} from './home/events/members-dialog/members-dialog.component';
@@ -41,7 +41,7 @@ export class AppRoutingModule {
   ];
 
   static DIALOGS = [
-    EventsCreateDialogComponent,
+    EventsCreateUpdateDialogComponent,
     GiftsCreateUpdateDialogComponent,
     MembersDialogComponent
   ];

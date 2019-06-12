@@ -11,4 +11,5 @@ export class ApiEndpoint {
   public static SEARCH = '/search';
   public static USER_EVENT = ApiEndpoint.USERS + '/event';
   public static GIFT_EVENT = ApiEndpoint.GIFTS + '/event';
+  public static EVENT_USER = ApiEndpoint.EVENTS + '/user';
 }

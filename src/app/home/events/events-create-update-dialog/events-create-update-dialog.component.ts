@@ -5,18 +5,20 @@ import {MAT_DIALOG_DATA} from '@angular/material';
 import {EventsService} from '../events.service';
 
 @Component({
-  selector: 'app-events-create-dialog',
-  templateUrl: './events-create-dialog.component.html',
-  styleUrls: ['./events-create-dialog.component.css']
+  selector: 'app-events-create-update-dialog',
+  templateUrl: './events-create-update-dialog.component.html',
+  styleUrls: ['./events-create-update-dialog.component.css']
 })
 
-export class EventsCreateDialogComponent implements OnInit {
+export class EventsCreateUpdateDialogComponent implements OnInit {
 
   event: Events;
   eventForm: FormGroup;
+  modeDialog: string;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private eventService: EventsService) {
     this.event = data.event;
+    this.modeDialog = data.mode;
   }
 
   ngOnInit() {
@@ -27,11 +29,29 @@ export class EventsCreateDialogComponent implements OnInit {
     });
   }
 
+  createOrEdit() {
+    if (this.modeDialog === 'Crear') {
+      this.createEvent();
+    } else {
+      this.updateEvent();
+    }
+  }
+
   createEvent() {
     this.eventService.create(this.eventForm.value).subscribe(result => {
       if (result) {
         return true;
       }
     });
+  }
+
+  updateEvent() {
+    this.eventService.update(this.event.id, this.eventForm.value).subscribe(
+      result => {
+        if (result) {
+          return true;
+        }
+      }
+    );
   }
 }
