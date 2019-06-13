@@ -85,4 +85,14 @@ export class GiftsComponent implements OnInit {
       }
     );
   }
+
+  delete(gift: Gifts) {
+    this.dialog.open(ConfirmationDialogComponent).afterClosed().subscribe(
+      (response) => {
+        if (response) {
+          console.log("Borrado el regalo " + gift.name);
+        }
+      }
+    );
+  }
 }
