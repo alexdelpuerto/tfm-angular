@@ -85,4 +85,22 @@ export class GiftsComponent implements OnInit {
       }
     );
   }
+
+  delete(gift: Gifts) {
+    this.dialog.open(ConfirmationDialogComponent).afterClosed().subscribe(
+      (response) => {
+        if (response) {
+          this.giftService.delete(gift.id).subscribe(
+            (response2) => {
+              if (response2) {
+                this.giftService.readGifts(Number.parseInt(sessionStorage.getItem('eventId'), 10)).subscribe(
+                  giftList => this.data = giftList
+                );
+              }
+            }
+          );
+        }
+      }
+    );
+  }
 }

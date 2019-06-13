@@ -26,4 +26,8 @@ export class GiftsService {
   update(giftId: number, gift: Gifts): Observable<any> {
     return this.httpService.messageCorrect('Regalo editado').put(ApiEndpoint.GIFTS + '/' + giftId, JSON.stringify(gift));
   }
+
+  delete(giftId: number): Observable<any> {
+    return this.httpService.messageCorrect('Regalo borrado').delete(ApiEndpoint.GIFTS + '/' + giftId);
+  }
 }
