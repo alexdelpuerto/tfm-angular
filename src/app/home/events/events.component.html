@@ -1,4 +1,4 @@
-<app-crud [data]="data" [title]="title" [columns]="columns" [deleteAction]="false" [editMembersAction]="true"
-          (create)="create()" (read)="getGifts($event)" (editMembers)="editMembers($event)" (update)="edit($event)">
+<app-crud [data]="data" [title]="title" [columns]="columns" [editMembersAction]="true" (editMembers)="editMembers($event)"
+          (create)="create()" (read)="getGifts($event)" (update)="edit($event)" (delete)="delete($event)">
 </app-crud>
 <app-gifts [data]="gifts"></app-gifts>

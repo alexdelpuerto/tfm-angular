@@ -25,4 +25,8 @@ export class EventsService {
   update(eventId: number, event: Events): Observable<any> {
     return this.httpService.messageCorrect('Evento editado').put(ApiEndpoint.EVENTS + '/' + eventId, JSON.stringify(event));
   }
+
+  delete(eventId: number): Observable<any> {
+    return this.httpService.messageCorrect('Evento borrado').delete(ApiEndpoint.EVENTS + '/' + eventId);
+  }
 }

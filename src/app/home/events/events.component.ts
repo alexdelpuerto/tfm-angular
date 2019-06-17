@@ -6,6 +6,7 @@ import {EventsCreateUpdateDialogComponent} from './events-create-update-dialog/e
 import {Gifts} from './gifts/gifts.model';
 import {GiftsService} from './gifts/gifts.service';
 import {MembersDialogComponent} from './members-dialog/members-dialog.component';
+import {ConfirmationDialogComponent} from '../../core/confirmation-dialog.component';
 
 @Component({
   selector: 'app-events',
@@ -97,6 +98,24 @@ export class EventsComponent implements OnInit {
             }
           }
         );
+      }
+    );
+  }
+
+  delete(event: Events) {
+    this.dialog.open(ConfirmationDialogComponent).afterClosed().subscribe(
+      (response) => {
+        if (response) {
+          this.eventService.delete(event.id).subscribe(
+            (response2) => {
+              if (response2) {
+                this.eventService.readEvents(Number.parseInt(sessionStorage.getItem('userId'), 10)).subscribe(
+                  eventList => this.data = eventList
+                );
+              }
+            }
+          );
+        }
       }
     );
   }
