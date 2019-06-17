@@ -106,7 +106,15 @@ export class EventsComponent implements OnInit {
     this.dialog.open(ConfirmationDialogComponent).afterClosed().subscribe(
       (response) => {
         if (response) {
-          console.log(event.id);
+          this.eventService.delete(event.id).subscribe(
+            (response2) => {
+              if (response2) {
+                this.eventService.readEvents(Number.parseInt(sessionStorage.getItem('userId'), 10)).subscribe(
+                  eventList => this.data = eventList
+                );
+              }
+            }
+          );
         }
       }
     );
