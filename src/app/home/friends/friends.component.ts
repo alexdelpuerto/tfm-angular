@@ -66,4 +66,14 @@ export class FriendsComponent implements OnInit {
       }
     );
   }
+
+  delete(friend: Friends) {
+    this.dialog.open(ConfirmationDialogComponent).afterClosed().subscribe(
+      (response) => {
+        if (response) {
+          console.log('Borrado el amigo ' + friend.username + ' con id ' + friend.id);
+        }
+      }
+    );
+  }
 }
