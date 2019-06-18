@@ -71,7 +71,13 @@ export class FriendsComponent implements OnInit {
     this.dialog.open(ConfirmationDialogComponent).afterClosed().subscribe(
       (response) => {
         if (response) {
-          console.log('Borrado el amigo ' + friend.username + ' con id ' + friend.id);
+          this.userService.deleteFriend(Number.parseInt(sessionStorage.getItem('userId'), 10), friend.id).subscribe(
+            (response2) => {
+              if (response2) {
+                this.readAll();
+              }
+            }
+          );
         }
       }
     );

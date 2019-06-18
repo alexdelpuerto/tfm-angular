@@ -44,4 +44,8 @@ export class UserService {
   updateUser(userId: number, user: UserRegister): Observable<any> {
     return this.httpService.messageCorrect('Usuario editado').put(ApiEndpoint.USERS + '/' + userId, JSON.stringify(user));
   }
+
+  deleteFriend(userId: number, friendId: number): Observable<any> {
+    return this.httpService.messageCorrect('Amigo borrado').delete(ApiEndpoint.USERS + '/' + userId + '/friends/' + friendId);
+  }
 }
