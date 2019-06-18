@@ -20,4 +20,8 @@ export class RequestsService {
   accept(request: Request): Observable<any> {
     return this.httpService.messageCorrect('Solicitud aceptada').post(ApiEndpoint.REQUESTS + ApiEndpoint.ACCEPT, JSON.stringify(request));
   }
+
+  cancel(requestId: number): Observable<any> {
+    return this.httpService.messageCorrect('Solicitud cancelada').delete(ApiEndpoint.REQUESTS + '/' + requestId);
+  }
 }

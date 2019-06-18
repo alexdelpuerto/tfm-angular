@@ -32,8 +32,14 @@ export class RequestsComponent implements OnInit {
     );
   }
 
-  cancel() {
-
+  cancel(request: Request) {
+    this.requestService.cancel(request.id).subscribe(
+      response => {
+        if (response) {
+          this.readAllRequests();
+        }
+      }
+    );
   }
 
   readAllRequests() {
