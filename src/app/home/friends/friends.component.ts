@@ -66,4 +66,20 @@ export class FriendsComponent implements OnInit {
       }
     );
   }
+
+  delete(friend: Friends) {
+    this.dialog.open(ConfirmationDialogComponent).afterClosed().subscribe(
+      (response) => {
+        if (response) {
+          this.userService.deleteFriend(Number.parseInt(sessionStorage.getItem('userId'), 10), friend.id).subscribe(
+            (response2) => {
+              if (response2) {
+                this.readAll();
+              }
+            }
+          );
+        }
+      }
+    );
+  }
 }
