@@ -48,4 +48,8 @@ export class UserService {
   deleteFriend(userId: number, friendId: number): Observable<any> {
     return this.httpService.messageCorrect('Amigo borrado').delete(ApiEndpoint.USERS + '/' + userId + '/friends/' + friendId);
   }
+
+  deleteUser(userId: number): Observable<any> {
+    return this.httpService.messageCorrect('Usuario borrado').delete(ApiEndpoint.USERS + '/' + userId);
+  }
 }
