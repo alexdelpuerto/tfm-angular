@@ -28,12 +28,18 @@ export class UserEditDialogComponent implements OnInit {
   }
 
   edit() {
+    console.log('Editar');
+    /*
     this.userService.updateUser(Number.parseInt(sessionStorage.getItem('userId'), 10), this.userForm.value).subscribe(
       result => {
         if (result) {
           return true;
         }
       }
-    );
+    );*/
+  }
+
+  delete() {
+    console.log('Borrar');
   }
 }
