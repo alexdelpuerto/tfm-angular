@@ -32,6 +32,7 @@ export class UserEditDialogComponent implements OnInit {
     this.userService.updateUser(Number.parseInt(sessionStorage.getItem('userId'), 10), this.userForm.value).subscribe(
       result => {
         if (result) {
+          sessionStorage.setItem('username', this.userForm.get('username').value);
           return true;
         }
       }

@@ -55,9 +55,13 @@ export class HomeComponent implements OnInit {
           user: response
         }
       };
-      this.dialog.open(UserEditDialogComponent, dialogConfig);
-    }, error => {
-
+      this.dialog.open(UserEditDialogComponent, dialogConfig).afterClosed().subscribe(
+        response2 => {
+          if (response2 === true) {
+            this.username = sessionStorage.getItem('username');
+          }
+        }
+      );
     });
   }
 
